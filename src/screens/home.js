@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import { View, StyleSheet, FlatList} from 'react-native';
 import { auth, db } from "../firebase/config";
-import Post from "../components/Post";
 
 class Home extends Component{
   constructor(props){

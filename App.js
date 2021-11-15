@@ -3,9 +3,7 @@ import Menu from './src/components/Menu'
 
 function App() {
   return (
-    <View>
-      < Menu />
-    </View>
+      <Menu/>  
   );
 }
 

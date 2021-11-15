@@ -69,6 +69,10 @@ class MyCamera extends Component {
     }
 
     clearPhoto(){
+        this.setState({
+            photo: '',
+            showCamera: true,
+        })
         //cambiar el estado de photo a ""
         //cambiar de showCamera a true
     }

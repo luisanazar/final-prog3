@@ -73,8 +73,6 @@ class MyCamera extends Component {
             photo: '',
             showCamera: true,
         })
-        //cambiar el estado de photo a ""
-        //cambiar de showCamera a true
     }
 
     render(){

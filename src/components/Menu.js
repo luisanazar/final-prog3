@@ -5,6 +5,7 @@ import { createDrawerNavigator} from '@react-navigation/drawer';
 import Home from '../screens/home';
 import Register from '../screens/register';
 import Login from '../screens/login';
+import PostForm from '../screens/postForm';
 import Profile from '../screens/profile';
 
 import { auth } from '../firebase/config';
@@ -99,7 +100,7 @@ class Menu extends Component{
                 
                     <Drawer.Navigator>
                         <Drawer.Screen name="Home" component={() =><Home />}></Drawer.Screen>
-                        <Drawer.Screen name="New Post" component={(drawerProps)=> <PostForm drawerProps= {drawerProps} />} />
+                        <Drawer.Screen name ="New Post" component={(drawerProps)=><PostForm drawerProps={drawerProps}/>}/>
                         <Drawer.Screen name="Mi Perfil" component={ ()=> <Profile logout={ () => this.logout()} userData={this.state.userData} /> } />
                     </Drawer.Navigator>
                 }   

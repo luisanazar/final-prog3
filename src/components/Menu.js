@@ -5,6 +5,7 @@ import { createDrawerNavigator} from '@react-navigation/drawer';
 import Home from '../screens/home';
 import Register from '../screens/register';
 import Login from '../screens/login';
+import Profile from '../screens/profile';
 
 import { auth } from '../firebase/config';
 
@@ -73,9 +74,16 @@ class Menu extends Component{
             this.setState({ //volver el estado como estaban originalmente
                 loggedIn: false, //muestra login registro
                 userData: '',
+            });
+        })
+        .catch(error => {
+            console.log('error');
+            this.setState({
+                errorMessage: error.message,
+                errorCode: error.code,
             })
-        .catch()
-        });
+        })
+        
     }
 
     render(){
@@ -92,7 +100,7 @@ class Menu extends Component{
                     <Drawer.Navigator>
                         <Drawer.Screen name="Home" component={() =><Home />}></Drawer.Screen>
                         <Drawer.Screen name="New Post" component={(drawerProps)=> <PostForm drawerProps= {drawerProps} />} />
-                        <Drawer.Screen name="Mi Perfil" component={ ()=> <Profile logout={ () => this.logout()} userData={this.state.userData.email} /> } />
+                        <Drawer.Screen name="Mi Perfil" component={ ()=> <Profile logout={ () => this.logout()} userData={this.state.userData} /> } />
                     </Drawer.Navigator>
                 }   
             </NavigationContainer>

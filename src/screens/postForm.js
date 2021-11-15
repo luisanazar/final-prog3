@@ -1,31 +1,35 @@
-// import { NavigationRouteContext } from "@react-navigation/native";
+import { NavigationContainer } from "@react-navigation/native";
 import React, {Component} from "react";
 import {View, Text, TextInput, StyleSheet, TouchableOpacity} from 'react-native';
-import { auth, db } from '../firebase/config'
-import MyCamera from '../components/MyCamera'
+import { auth, db } from "../firebase/config";
+import MyCamera from "../components/MyCamera";
 
-class PostForm extends Component{
+class postForm extends Component{
     constructor(props){
         super(props)
         this.state={
             textoPost:'',
-            //showCamera: true,
+            showCamera: true,
             url: '',
+            description: '',
         }
     }
+
+
     submitPost(){
-        console.log('posteando...');
+        console.log('posteanado');
         db.collection('posts').add({
             owner: auth.currentUser.email,
             texto: this.state.textoPost,
             createdAt: Date.now(),
             photo: this.state.url,
         })
-        .then( ()=>{ //Limpiar el form de carga
+        .then( ()=>{ //limpiar el form de carga
             this.setState({
-                textoPost:'',
+                textoPost:'', //los datos en el campo input se guardan en el estado.
+                              // para que limpie lo dejamos vacio denuevo y que redireccione a la home
             })
-            //Redirección
+            //redireccion
             this.props.drawerProps.navigation.navigate('Home')
         })
         .catch()
@@ -34,33 +38,29 @@ class PostForm extends Component{
     onImageUpload(url){
         this.setState({
             showCamera: false,
-            url: url,
-        });
+            url: url
+        })
     }
 
     render(){
         return(
-            <View style={styles.container}>
-                {
-                    this.state.showCamera ?
-                    <MyCamera onImageUpload={(url) => {this.onImageUpload(url)}}/> 
-                    :
-
+            <View style= {styles.container}>
+                {this.state.showCamera ? 
+                <MyCamera onImageUpload={(url)=> {this.onImageUpload(url)}}/> : //sino, renderiza el resto del form
                 <View style={styles.formContainer}>
-                    <Text>Add Post</Text>
+                    <Text>New post</Text>
                     <TextInput
                         style={styles.input}
                         onChangeText={(text)=>this.setState({textoPost: text})}
-                        placeholder='Escribí aquí'
+                        placeholder='Escribi aqui'
                         keyboardType='default'
-                        multiline
-                        value={this.state.textoPost}    
-                        />
+                        multiline //campo input en text align
+                        value= {this.state.textoPost}
+                    />
                     <TouchableOpacity style={styles.button} onPress={()=>this.submitPost()}>
                         <Text style={styles.textButton}>Guardar</Text>    
                     </TouchableOpacity>
                 </View>
-
                 }
             </View>
         )
@@ -68,9 +68,6 @@ class PostForm extends Component{
 }
 
 const styles = StyleSheet.create({
-    container:{
-        flex: 1,
-    },
     formContainer:{
         paddingHorizontal:10,
         marginTop: 20,
@@ -97,8 +94,11 @@ const styles = StyleSheet.create({
     },
     textButton:{
         color: '#fff'
-    }
+    },
+    container:{
+        flex: 1,
+    },
 
 })
 
-export default PostForm;
+export default postForm;

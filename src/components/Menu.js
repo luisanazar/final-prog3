@@ -42,7 +42,7 @@ class Menu extends Component{
                 console.log('Registrado');
             })
             .catch(error => {
-                console.log('error');
+                console.log(error);
                 this.setState({
                     errorMessage: error.message,
                     errorCode: error.code,
@@ -61,7 +61,7 @@ class Menu extends Component{
                 });
             })
             .catch(error => {
-                console.log('error');
+                console.log(error);
                 this.setState({
                     errorMessage: error.message,
                     errorCode: error.code,
@@ -78,7 +78,7 @@ class Menu extends Component{
             });
         })
         .catch(error => {
-            console.log('error');
+            console.log(error);
             this.setState({
                 errorMessage: error.message,
                 errorCode: error.code,

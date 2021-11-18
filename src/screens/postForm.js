@@ -26,8 +26,7 @@ class postForm extends Component{
         })
         .then( ()=>{ //limpiar el form de carga
             this.setState({
-                textoPost:'', //los datos en el campo input se guardan en el estado.
-                              // para que limpie lo dejamos vacio denuevo y que redireccione a la home
+                textoPost:'', //los datos en el campo input se guardan en el estado.        // para que limpie lo dejamos vacio denuevo y que redireccione a la home
             })
             //redireccion
             this.props.drawerProps.navigation.navigate('Home')

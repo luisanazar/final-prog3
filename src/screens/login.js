@@ -13,7 +13,7 @@ class Login extends Component{
 
 
     render(){
-        console.log(this.props.login);
+        console.log(this.props);
         return(
             <View style={styles.formContainer}>
                 <Text>Login</Text>
@@ -29,6 +29,9 @@ class Login extends Component{
                     keyboardType='email-address'
                     secureTextEntry={true}
                 />
+                <Text> 
+                    {this.props.errorMessage}
+                </Text>
                 <TouchableOpacity style={styles.button} onPress={()=>this.props.login(this.state.email, this.state.password)}>
                     <Text style={styles.textButton}>Ingresar</Text>    
                 </TouchableOpacity>

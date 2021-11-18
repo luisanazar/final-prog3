@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Text, View, StyleSheet, TouchableOpacity, Modal, TextInput, FlatList} from 'react-native';
+import {Text, View, StyleSheet, TouchableOpacity, Modal, TextInput, FlatList, Image} from 'react-native';
 import firebase from 'firebase';
 import {db, auth} from '../firebase/config';
 
@@ -99,6 +99,7 @@ class Post extends Component{
                 <Text>Texto del post: {this.props.postData.data.texto}</Text>
                 <Text>User: {this.props.postData.data.owner}</Text>
                 <Text>Likes: {this.state.likes} </Text>
+                <Image  source={{uri:this.props.postData.data.photo}}/> 
                 {this.state.myLike == false ? 
                     <TouchableOpacity onPress={()=> this.darLike()}>
                         <Text>Me gusta</Text>

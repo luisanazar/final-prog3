@@ -1,55 +1,84 @@
 import React, {Component} from 'react';
-import { View, StyleSheet, FlatList} from 'react-native';
-import { auth, db } from "../firebase/config";
+import { View, StyleSheet, FlatList,  ActivityIndicator, Image} from 'react-native';
+import { db } from "../firebase/config";
 
 import Post from '../components/Post'
+import Buscador from '../components/Buscador'
 
 class Home extends Component{
   constructor(props){
     super(props);
     this.state ={
       posteos: [],
+      loading: true,
+      verTodo: true
     }
   }
 
   componentDidMount(){
-    console.log('didMount de Home');
-    db.collection('posts').onSnapshot(
+    this.verTodo
+  }
+
+  buscar (textoABuscar){
+    db.collection ('posts').where('owner', '==', textoABuscar).onSnapShot(
+    docs => {
+    let posts = [];
+    docs.forEach(doc => {
+        posts.push({
+          id: doc.id, //numero de la columna del medio
+          data: doc.data(), //funcion que se queda solo con la funcion del documento
+        })
+    })
+    console.log (posts);
+  
+    this.setState ({
+ posteos: posts,
+ loading: false,
+ mostrarTodo: false,
+    })
+  })
+  }
+
+  mostrarTodo (){
+    db.collection ('posts').orderBy('createdAt', 'desc').onSnapShot (
       docs => {
-        console.log(docs);
-        //arrray para crear los datos en formato mas util
-        let posts = [];
-        docs.forEach(doc => {
-            posts.push({
-              id: doc.id, //numero de la columna del medio
-              data: doc.data(), //funcion que se queda solo con la funcion del documento
-            })
+    let posts = [];
+    docs.forEach(doc => {
+        posts.push({
+          id: doc.id, //numero de la columna del medio
+          data: doc.data(), //funcion que se queda solo con la funcion del documento
         })
-        console.log(posts);
+    })
 
-        this.setState({
-          posteos: posts, //pasamos la variable al estado
-        })
-
-
-      }
-    )
+    console.log (posts);
+  
+    this.setState ({
+      posteos: posts,
+      loading: false
+    })
+  })
   }
 
   render(){
     return(
       <View style={styles.container}>
 
-        <FlatList //pasamos data de posteos, una key unica
-          data= { this.state.posteos }
-          keyExtractor = { post => post.id}
-          renderItem = { ({item}) => 
-          <Post postData={item} /> }
-         
-          // =>  <Text>{item.data.texto}</Text>}
-          //armar componente post <Post> mas complejo y renderizarlo con los datos de cada documento
-        />
+        <Buscador buscar={(texto)=> this.buscar (texto)}
+        mostrarTodo={()=>this.verTodo()}/>
 
+        {this.state.loading ?
+        <ActivityIndicator size='large' color='red'/> :
+
+        <FlatList //pasamos data de posteos, una key unica
+        data= { this.state.posteos }
+        keyExtractor = { post => post.id}
+        renderItem = { ({item}) => 
+        <Post postData={item} /> }
+        
+       
+        // =>  <Text>{item.data.texto}</Text>}
+        //armar componente post <Post> mas complejo y renderizarlo con los datos de cada documento
+      /> }
       </View>
       
     )

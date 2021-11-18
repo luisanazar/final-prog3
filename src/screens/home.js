@@ -11,7 +11,7 @@ class Home extends Component{
     this.state ={
       posteos: [],
       loading: true,
-      verTodo: true
+      mostrarTodo: true,
     }
   }
 

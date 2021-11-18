@@ -99,7 +99,10 @@ class Post extends Component{
                 <Text>Texto del post: {this.props.postData.data.texto}</Text>
                 <Text>User: {this.props.postData.data.owner}</Text>
                 <Text>Likes: {this.state.likes} </Text>
-                <Image  source={{uri:this.props.postData.data.photo}}/> 
+                <Image source={{uri:this.props.postData.data.photo}}
+                    style={{'height': 350}}
+                    resizeMode = 'contain'   
+                /> 
                 {this.state.myLike == false ? 
                     <TouchableOpacity onPress={()=> this.darLike()}>
                         <Text>Me gusta</Text>
@@ -171,6 +174,7 @@ const styles = StyleSheet.create({
         borderColor: '#ccc',
         borderWidth: 1,
         padding: 10,
+        marginTop: 80,
     },
     modalContainer:{
         width:'97%',

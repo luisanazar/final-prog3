@@ -10,8 +10,6 @@ class Register extends Component{
             password:'',
         }
     }
-    
-
 
     render(){
         return(

@@ -16,11 +16,11 @@ class Home extends Component{
   }
 
   componentDidMount(){
-    this.verTodo
+    this.mostrarTodo ()
   }
 
   buscar (textoABuscar){
-    db.collection ('posts').where('owner', '==', textoABuscar).onSnapShot(
+    db.collection ('posts').where('owner', '==', textoABuscar).onSnapshot(
     docs => {
     let posts = [];
     docs.forEach(doc => {
@@ -32,15 +32,15 @@ class Home extends Component{
     console.log (posts);
   
     this.setState ({
- posteos: posts,
- loading: false,
- mostrarTodo: false,
+      posteos: posts,
+      loading: false,
+      mostrarTodo: false,
     })
   })
   }
 
   mostrarTodo (){
-    db.collection ('posts').orderBy('createdAt', 'desc').onSnapShot (
+    db.collection ('posts').orderBy('createdAt', 'desc').onSnapshot (
       docs => {
     let posts = [];
     docs.forEach(doc => {
@@ -64,10 +64,9 @@ class Home extends Component{
       <View style={styles.container}>
 
         <Buscador buscar={(texto)=> this.buscar (texto)}
-        mostrarTodo={()=>this.verTodo()}/>
+        mostrarTodo={()=>this.mostrarTodo()}/>
 
-        {this.state.loading ?
-        <ActivityIndicator size='large' color='red'/> :
+       
 
         <FlatList //pasamos data de posteos, una key unica
         data= { this.state.posteos }
@@ -78,7 +77,7 @@ class Home extends Component{
        
         // =>  <Text>{item.data.texto}</Text>}
         //armar componente post <Post> mas complejo y renderizarlo con los datos de cada documento
-      /> }
+      /> 
       </View>
       
     )

@@ -1,33 +1,41 @@
 import React, { Component } from 'react';
-import {Text, View, StyleSheet, TouchableOpacity, Modal, TextInput, FlatList, Image} from 'react-native';
-import firebase from 'firebase';
-import {db, auth} from '../firebase/config';
-
+import {Text, View, StyleSheet, TouchableOpacity, TextInput} from 'react-native';
 
 class Buscador extends Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
-            loggedIn: false,
-            userData: '',
-            errorMessage: '',
-            errorCode:'',
+            search:''
         }
     }
 
     render(){
         return(
-            <View style= {styles.container}>
-            
+            <View style= {styles.containerBuscador}>
+                <TextInput
+                style= {styles.input}
+                onChangeText={(texto)=>this.setState ({search: texto})}
+                placeholder= 'Buscar'
+                keyboardType='default' />
+
+            <TouchableOpacity onPress={() => this.props.buscar (this.state.search)}> 
+            <Text>Buscar</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => this.props.mostrarTodo()}> 
+            <Text>Mostrar todos los posteos</Text>
+            </TouchableOpacity>
             </View>
           
         )
     }
 }
 const styles = StyleSheet.create({
-    container:{
+    containerBuscador:{
         flex: 1,
     },
+    input: {
+        height: 20,
+    }
 })
 
 

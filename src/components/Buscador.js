@@ -18,7 +18,7 @@ class Buscador extends Component{
                 placeholder= 'Buscar'
                 keyboardType='default' />
 
-            <TouchableOpacity style= {styles.botonMostrarTodo} onPress={() => this.props.buscar (this.state.search)}> 
+            <TouchableOpacity style= {styles.botonBuscar} onPress={() => this.props.buscar (this.state.search)}> 
             <Text>Buscar</Text>
             </TouchableOpacity>
             <TouchableOpacity style= {styles.botonMostrarTodo} onPress={() => this.props.mostrarTodo()}> 
@@ -44,9 +44,24 @@ const styles = StyleSheet.create({
     error: {
         marginBottom: 10,
     },
-    botonMostrarTodo:{
-        paddingBottom: 10,
+    botonBuscar:{
+        flex: 1,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        backgroundColor: '#F5F5F5',
+        justifyContent: 'center',
         paddingTop: 10,
+        paddingBottom: 10,
+        border: 'black solid 1px'
+    },
+    botonMostrarTodo:{
+        flex: 1,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        backgroundColor: '#F5F5F5',
+        justifyContent: 'center',
+        paddingTop: 10,
+        paddingBottom: 10,
         border: 'black solid 1px'
     }
 })

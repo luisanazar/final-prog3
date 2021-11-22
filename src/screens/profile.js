@@ -16,6 +16,7 @@ class Profile extends Component{
   componentDidMount() {
     db.collection("posts")
     .where('owner' , '==', this.props.userData.email) // el '==' pq el .where es de firebase, el firebase recibe tres datos de texto. 
+      .orderBy("createdAt", "desc")
       .onSnapshot((docs) => {
         let posts = [];
         docs.forEach((doc) => {

@@ -30,20 +30,16 @@ class Buscador extends Component{
     }
 }
 const styles = StyleSheet.create({
-    containerBuscador:{
+   containerBuscador:{
         paddingHorizontal: 10,
-        marginTop: 20,
-        flex: 1,
     },
     input: {
         height: 20,
-        paddingVertical: 15,
-        paddingHorizontal: 10,
         borderWidth: 1,
         borderColor: '#ccc',
         borderStyle: 'solid',
         borderRadius: 6,
-        marginVertical: 10,
+
     },
     error: {
         marginBottom: 10,
@@ -51,6 +47,7 @@ const styles = StyleSheet.create({
     botonMostrarTodo:{
         paddingBottom: 10,
         paddingTop: 10,
+        border: 'black solid 1px'
     }
 })
 

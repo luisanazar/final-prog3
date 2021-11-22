@@ -85,7 +85,7 @@ class Home extends Component{
 }
 
 const styles = StyleSheet.create({
-  container:{
+ container:{
     paddingHorizontal:10,
   },
   formContainer:{
@@ -107,8 +107,7 @@ const styles = StyleSheet.create({
   touchable:{
     backgroundColor: '#ccc',
     borderRadius:4,
-    marginVertical:10,
-  }
+  } 
 })
 
 export default Home;

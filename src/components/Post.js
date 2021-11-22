@@ -11,7 +11,7 @@ class Post extends Component{
             likes: 0, //cantidad de likes q tiene el post
             myLike: false, //mi like
             showModal: false,
-            comments: '', //limpiar el campo despues de enviar
+            comment: '', //limpiar el campo despues de enviar
  
         }
     }
@@ -128,13 +128,18 @@ class Post extends Component{
                             <Text style={styles.closeButton}>X</Text>
                         </TouchableOpacity>
                         {/* FLAT LIST PARA MOSTRAR COMENTARIO */}
-                            <FlatList
+                        { ! this.props.postData.data.comments || this.props.postData.data.comments.length == 0 ? 
+                        <Text> Aún no hay comentarios. Sé el primero en opinar.</Text>
+                        : 
+                                <FlatList
                                 data={this.props.postData.data.comments} //array
                                 keyExtractor={(comment)=> comment.createdAt.toString()} //un parametro que es cada uno de los elementos del array.
                                 //busca la fecha de creacion y lo pasa a cadena de texto 
                                 renderItem= {({item})=> <Text>{item.author}: {item.comment}</Text>}
                             
-                            />
+                            />  
+                    }
+                            
 
 
                         {/* FORMULARIO PARA NUEVO COMENTARIO */}
@@ -148,7 +153,8 @@ class Post extends Component{
                                 value={this.state.comment}
                             />
                             <TouchableOpacity  
-                                style={styles.button} 
+                                style={styles.button}
+                                disabled={this.state.comment.length == 0 ? true : false} 
                                 onPress={()=>this.guardarComentario()}>
                                     <Text style={styles.textButton}>Guardar comentario</Text>
                             </TouchableOpacity>

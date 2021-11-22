@@ -32,7 +32,7 @@ class Register extends Component{
                     keyboardType='email-address'
                     secureTextEntry={true}
                 />
-                <TouchableOpacity style={styles.button} onPress={()=>this.props.register(this.state.email, this.state.password)} disabled={this.state.email.length == 0 || this.state.username.length == 0 ||this.state.password.length==0 ? true : false}>
+                <TouchableOpacity style={styles.button} onPress={()=>this.props.register(this.state.email, this.state.password, this.state.username)} disabled={this.state.email.length == 0 || this.state.username.length == 0 ||this.state.password.length==0 ? true : false}>
                     <Text style={styles.textButton}>Registrarse</Text>    
                 </TouchableOpacity>
                 <Text> 

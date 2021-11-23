@@ -90,7 +90,10 @@ class Post extends Component{
         })
         
            
-        
+    }
+
+    borrarPost(){
+        db.collection('posts').doc(this.props.postData.id).delete();
     }
 
     render(){
@@ -115,6 +118,12 @@ class Post extends Component{
                 <TouchableOpacity onPress={()=>this.showModal()}>
                     <Text>Ver comentarios</Text>
                 </TouchableOpacity>
+
+                {/* BORRAR POST*/}
+                <TouchableOpacity onPress={()=> this.borrarPost()}> 
+                    <Text>Borrar Post</Text>
+                </TouchableOpacity>
+
                 {/* MODAL PARA COMENTARIOS */}
                 { this.state.showModal ?
                      <Modal 

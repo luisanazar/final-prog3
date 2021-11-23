@@ -94,6 +94,7 @@ class Post extends Component{
 
     borrarPost(){
         db.collection('posts').doc(this.props.postData.id).delete();
+        alert('¿Esta seguro de que quiere borrar el post?')
     }
 
     render(){

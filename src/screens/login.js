@@ -29,7 +29,7 @@ class Login extends Component{
                     keyboardType='email-address'
                     secureTextEntry={true}
                 />
-                <Text> 
+                <Text style={styles.error}> 
                     {this.props.errorMessage}
                 </Text>
                 <TouchableOpacity style={styles.button} onPress={()=>this.props.login(this.state.email, this.state.password ) } disabled={this.state.email.length == 0 ||this.state.password.length==0 ? true : false}>
@@ -44,9 +44,11 @@ const styles = StyleSheet.create({
     formContainer:{
         paddingHorizontal:10,
         marginTop: 20,
+        marginLeft: 10,
     },
     input:{
         height:20,
+        width: 300,
         paddingVertical:15,
         paddingHorizontal: 10,
         borderWidth:1,
@@ -63,10 +65,15 @@ const styles = StyleSheet.create({
         borderRadius:4, 
         borderWidth:1,
         borderStyle: 'solid',
-        borderColor: '#28a745'
+        borderColor: '#28a745',
+        width: 300,
     },
     textButton:{
         color: '#fff'
+    },
+    error: {
+        color: 'red',
+        marginBottom: 10
     }
 
 })

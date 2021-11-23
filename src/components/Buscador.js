@@ -32,37 +32,49 @@ class Buscador extends Component{
 const styles = StyleSheet.create({
    containerBuscador:{
         paddingHorizontal: 10,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
     },
     input: {
-        height: 20,
         borderWidth: 1,
         borderColor: '#ccc',
         borderStyle: 'solid',
         borderRadius: 6,
-
+        marginRight: 10,
+        marginTop: 15,
+        paddingTop: 2,
+        paddingBottom: 2,
+        paddingHorizontal: 5,
+        marginLeft: 10
     },
     error: {
         marginBottom: 10,
     },
     botonBuscar:{
-        flex: 1,
         flexDirection: 'row',
         flexWrap: 'wrap',
-        backgroundColor: '#F5F5F5',
+        backgroundColor: 'rgba(241, 243, 244, 1)',
         justifyContent: 'center',
-        paddingTop: 10,
-        paddingBottom: 10,
-        border: 'black solid 1px'
+        marginTop: 15,
+        paddingTop: 2,
+        paddingBottom: 2,
+        paddingHorizontal: 5,
+        borderRadius: 6,
+        border: 'grey solid 1px',
+        width: 60,
+        marginRight:  10,
     },
     botonMostrarTodo:{
-        flex: 1,
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        backgroundColor: '#F5F5F5',
+        backgroundColor: 'rgba(241, 243, 244, 1)',
         justifyContent: 'center',
-        paddingTop: 10,
-        paddingBottom: 10,
-        border: 'black solid 1px'
+        marginTop: 15,
+        paddingTop: 2,
+        paddingBottom: 2,
+        paddingLeft: 5,
+        marginLeft: 10,
+        border: 'grey solid 1px',
+        borderRadius: 6,
+        width: 190,
     }
 })
 

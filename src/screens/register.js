@@ -14,7 +14,7 @@ class Register extends Component{
     render(){
         return(
             <View style={styles.formContainer}>
-                <Text>Register</Text>
+                <Text style={styles.register}>Register</Text>
                 <TextInput
                     style={styles.input}
                     onChangeText={(text)=>this.setState({email: text})}
@@ -32,12 +32,13 @@ class Register extends Component{
                     keyboardType='email-address'
                     secureTextEntry={true}
                 />
+                <Text style={styles.error}> 
+                    {this.props.errorMessage}
+                </Text>
+
                 <TouchableOpacity style={styles.button} onPress={()=>this.props.register(this.state.email, this.state.password, this.state.username)} disabled={this.state.email.length == 0 || this.state.username.length == 0 ||this.state.password.length==0 ? true : false}>
                     <Text style={styles.textButton}>Registrarse</Text>    
                 </TouchableOpacity>
-                <Text> 
-                    {this.props.errorMessage}
-                </Text>
             </View>
         )
     }
@@ -48,6 +49,9 @@ const styles = StyleSheet.create({
         paddingHorizontal:10,
         marginTop: 20,
     },
+    register: {
+        marginLeft:10,
+    },
     input:{
         height:20,
         paddingVertical:15,
@@ -57,6 +61,8 @@ const styles = StyleSheet.create({
         borderStyle: 'solid',
         borderRadius: 6,
         marginVertical:10,
+        marginLeft:10,
+        width: 300,
     },
     button:{
         backgroundColor:'#28a745',
@@ -66,10 +72,17 @@ const styles = StyleSheet.create({
         borderRadius:4, 
         borderWidth:1,
         borderStyle: 'solid',
-        borderColor: '#28a745'
+        borderColor: '#28a745',
+        marginLeft:10,
+        width: 300,
     },
     textButton:{
         color: '#fff'
+    },
+    error: {
+        color: 'red',
+        marginBottom: 10,
+        marginLeft: 10
     }
 
 })

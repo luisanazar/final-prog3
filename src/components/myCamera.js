@@ -87,11 +87,11 @@ class MyCamera extends Component {
                         style={styles.cameraBody}
                         source={{uri:this.state.photo}}
                     /> 
-                    <View>
-                        <TouchableOpacity onPress={()=> this.savePhoto()}>
+                    <View style={styles.opciones}>
+                        <TouchableOpacity onPress={()=> this.savePhoto()} style={styles.aceptar}>
                             <Text>Aceptar</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity onPress={()=> this.clearPhoto()}>
+                        <TouchableOpacity onPress={()=> this.clearPhoto()} style={styles.rechazar}>
                             <Text>Rechazar</Text>
                         </TouchableOpacity>
                     </View>
@@ -113,7 +113,7 @@ class MyCamera extends Component {
                 //si tiene permiso renderiza la camara sino: 
                 :
                 //render mensaje
-                <Text>No tienes permisos para usar la camara</Text>
+                <Text style={styles.permiso}>No tienes permisos para usar la camara</Text>
             }
             </View>
           
@@ -129,11 +129,59 @@ const styles = StyleSheet.create({
     },
     cameraBody:{
         flex: 7,
+        margin: 30
     },
     button:{
-        flex: 1,
+        marginLeft: 50,
+        borderRadius: 6,
+        border: 'grey solid 1px',
+        marginTop: 0,
+        marginBottom: 20,
+        paddingTop: 1,
+        paddingBottom: 1,
+        paddingHorizontal: 10,
+        width: 89,
+        height: 30,
         justifyContent: 'center',
+        textAlign: 'center',
     },
+    opciones: {
+        justifyContent: 'center',
+        flexDirection: 'row',
+        flexWrap: 'wrap', 
+    },
+    aceptar: {
+        justifyContent: 'center',
+        textAlign: 'center',
+        marginLeft: 5,
+        borderRadius: 6,
+        border: 'grey solid 1px',
+        marginTop: 0,
+        marginBottom: 20,
+        paddingTop: 2,
+        paddingBottom: 2,
+        paddingHorizontal: 10,
+        width: 83,
+        height: 30,
+    },
+    rechazar:{
+        justifyContent: 'center',
+        textAlign: 'center',
+        marginLeft: 5,
+        borderRadius: 6,
+        border: 'grey solid 1px',
+        marginTop: 0,
+        marginBottom: 20,
+        paddingTop: 2,
+        paddingBottom: 2,
+        paddingHorizontal: 10,
+        width: 83,
+        height: 30,
+    },
+    permiso: {
+        marginLeft:5,
+        color: 'red'
+    }
 
 })
 

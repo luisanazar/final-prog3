@@ -41,12 +41,13 @@ class Profile extends Component{
       <View style={styles.container}>
           <Text style={styles.welcome}> Bienvenido: {this.props.userData.email}</Text>
           <Text style={styles.welcome}> Nombre de usuario: {this.props.userData.displayName}</Text>
-          <Text style={styles.element}> Usuario creado el: {this.props.userData.metadata.creationTime}</Text>
+          <Text style={styles.element}> Usuario creado: {this.props.userData.metadata.creationTime}</Text>
           <Text style={styles.element}> Último login: {this.props.userData.metadata.lastSignInTime}</Text>
           <TouchableOpacity style={styles.touchable} onPress={()=>this.props.logout()}>
             <Text style={styles.touchableText}>Logout</Text>
           </TouchableOpacity>
           <FlatList //pasamos data de posteos, una key unica
+          style={styles.post}
           data={this.state.posteos}
           keyExtractor={(post) => post.id}
           renderItem={({ item }) => <Post postData={item} />}
@@ -59,29 +60,41 @@ class Profile extends Component{
 const styles = StyleSheet.create({
     container:{
         marginTop: 20,
-        marginHorizontal:10
+        marginHorizontal:10,
+        backgroundColor: 'rgba(241, 243, 244, 1)'
     },
     welcome:{
         fontSize:18,
-        marginTop:20,
-        marginBottom:30,
-        fontWeight: 'bold'
+        marginTop:10,
+        marginBottom:10,
+        fontWeight: 'bold',
+        paddingHorizontal: 10,
     },
     element:{
+      marginTop:10,
         marginBottom:10,
+        paddingHorizontal: 10,
     },
     touchable:{
-        padding: 10,
         backgroundColor: '#dc3545',
-        marginTop: 30,
+        marginTop: 10,
         borderRadius: 4,
+        width:90,
+        padding: 10,
+        marginLeft:15
     },
     touchableText:{
         fontWeight: 'bold',
         color:'#fff',
-        textAlign: 'center'
+        textAlign: 'center',
+        paddingHorizontal: 10,
+    },
+    post: {
+    marginTop: 5,
+    marginLeft:5,
+    marginRight: 5,
+    backgroundColor: 'rgba(241, 243, 244, 1)'
     }
-    
 });
 
 export default Profile;

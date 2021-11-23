@@ -99,8 +99,8 @@ class Post extends Component{
     render(){
         return(
             <View style={styles.container}>
-                <Text>Texto del post: {this.props.postData.data.texto}</Text>
                 <Text>User: {this.props.postData.data.owner}</Text>
+                <Text>Texto del post: {this.props.postData.data.texto}</Text>
                 <Text>Likes: {this.state.likes} </Text>
                 <Image source={{uri:this.props.postData.data.photo}}
                     style={{'height': 350}}
@@ -138,9 +138,10 @@ class Post extends Component{
                         </TouchableOpacity>
                         {/* FLAT LIST PARA MOSTRAR COMENTARIO */}
                         { ! this.props.postData.data.comments || this.props.postData.data.comments.length == 0 ? 
-                        <Text> Aún no hay comentarios. Sé el primero en opinar.</Text>
+                        <Text style={styles.alert}> Aún no hay comentarios. Sé el primero en opinar.</Text>
                         : 
                                 <FlatList
+                                style={styles.alert}
                                 data={this.props.postData.data.comments} //array
                                 keyExtractor={(comment)=> comment.createdAt.toString()} //un parametro que es cada uno de los elementos del array.
                                 //busca la fecha de creacion y lo pasa a cadena de texto 
@@ -188,8 +189,9 @@ const styles = StyleSheet.create({
         borderRadius:4,
         borderColor: '#ccc',
         borderWidth: 1,
-        padding: 10,
-        marginTop: 80,
+        padding: 5,
+        marginTop: 20,
+        marginLeft:10,
     },
     modalContainer:{
         width:'97%',
@@ -200,7 +202,6 @@ const styles = StyleSheet.create({
         marginVertical: 10,
         marginTop:20,
         marginBottom: 10, 
-
     },
     closeButton:{
         color:'#fff',
@@ -209,16 +210,27 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-end',
         borderRadius:4,
         paddingHorizontal:8,
+        marginRight:10,
+        marginTop: 10,
     },
     input:{
-        height:20,
-        paddingVertical:15,
-        paddingHorizontal: 10,
+        height:25,
+        width: 300,
+        paddingBottom:2,
+        paddingTop: 2,
         borderWidth:1,
         borderColor: '#ccc',
         borderStyle: 'solid',
         borderRadius: 6,
-        marginVertical:10,
+        marginLeft:10,
+        paddingLeft: 10,
+        justifyContent: 'center',
+        marginBottom: 10,
+    },
+    alert: {
+        marginLeft:12,
+        marginBottom: 10,
+        color: 'red'
     },
     button:{
         backgroundColor:'#28a745',
@@ -228,7 +240,9 @@ const styles = StyleSheet.create({
         borderRadius:4, 
         borderWidth:1,
         borderStyle: 'solid',
-        borderColor: '#28a745'
+        borderColor: '#28a745',
+        marginLeft:10,
+        width: 300,
     },
     textButton:{
         color: '#fff'

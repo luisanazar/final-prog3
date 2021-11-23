@@ -3,8 +3,6 @@ import {
   View,
   StyleSheet,
   FlatList,
-  ActivityIndicator,
-  Image,
 } from "react-native";
 import { db } from "../firebase/config";
 
@@ -76,6 +74,7 @@ class Home extends Component {
         />
 
         <FlatList //pasamos data de posteos, una key unica
+          style={styles.formContainer}
           data={this.state.posteos}
           keyExtractor={(post) => post.id}
           renderItem={({ item }) => <Post postData={item} />}
@@ -90,28 +89,14 @@ class Home extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 10,
+    backgroundColor: 'rgba(241, 243, 244, 1)'
   },
   formContainer: {
-    backgroundColor: "#ccc",
-    marginHorizontal: 10,
-    padding: 10,
-  },
-  field: {
-    borderColor: "#444",
-    borderWidth: 1,
-    borderStyle: "solid",
-    height: 20,
-    paddingHorizontal: 20,
-    paddingVertical: 10,
-  },
-  image: {
-    height: 250,
-  },
-  touchable: {
-    backgroundColor: "#ccc",
-    borderRadius: 4,
-  },
+    marginTop: 5,
+marginRight:  10,
+marginLeft: 10,
+
+  }
 });
 
 export default Home;

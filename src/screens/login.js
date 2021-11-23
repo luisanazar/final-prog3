@@ -45,6 +45,8 @@ const styles = StyleSheet.create({
         paddingHorizontal:10,
         marginTop: 20,
         marginLeft: 10,
+        alignItems: 'center',
+        textAlign: 'center',
     },
     input:{
         height:20,

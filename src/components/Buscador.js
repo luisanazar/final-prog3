@@ -12,18 +12,21 @@ class Buscador extends Component{
     render(){
         return(
             <View style= {styles.containerBuscador}>
+             
+
+               
                 <TextInput
                 style= {styles.input}
                 onChangeText={(texto)=>this.setState ({search: texto})}
                 placeholder= 'Buscar'
                 keyboardType='default' />
-
+  
             <TouchableOpacity style= {styles.botonBuscar} onPress={() => this.props.buscar (this.state.search)}> 
             <Text>Buscar</Text>
             </TouchableOpacity>
             <TouchableOpacity style= {styles.botonMostrarTodo} onPress={() => this.props.mostrarTodo()}> 
             <Text>Mostrar todos los posteos</Text>
-            </TouchableOpacity>
+            </TouchableOpacity>  
             </View>
           
         )
@@ -45,7 +48,8 @@ const styles = StyleSheet.create({
         paddingTop: 2,
         paddingBottom: 2,
         paddingHorizontal: 5,
-        marginLeft: 10
+        marginLeft: 10,
+        width: 180
     },
     error: {
         marginBottom: 10,
@@ -62,7 +66,7 @@ const styles = StyleSheet.create({
         borderRadius: 6,
         border: 'grey solid 1px',
         width: 60,
-        marginRight:  10,
+        marginRight: 50,
     },
     botonMostrarTodo:{
         backgroundColor: 'rgba(241, 243, 244, 1)',
@@ -74,7 +78,7 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         border: 'grey solid 1px',
         borderRadius: 6,
-        width: 190,
+        width: 180,
     }
 })
 

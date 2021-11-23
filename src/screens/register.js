@@ -48,6 +48,8 @@ const styles = StyleSheet.create({
     formContainer:{
         paddingHorizontal:10,
         marginTop: 20,
+        alignItems: 'center',
+        textAlign: 'center',
     },
     register: {
         marginLeft:10,

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Text, View, StyleSheet, TouchableOpacity, Modal, TextInput, FlatList, Image} from 'react-native';
 import firebase from 'firebase';
 import {db, auth} from '../firebase/config';
+import { out } from 'react-native/Libraries/Animated/Easing';
 
 
 class Post extends Component{
@@ -100,37 +101,58 @@ class Post extends Component{
     render(){
         return(
             <View style={styles.container}>
-                <Text>User: {this.props.postData.data.owner}</Text>
-                <Text>Texto del post: {this.props.postData.data.texto}</Text>
-                <Text>Likes: {this.state.likes} </Text>
+                <Text>{this.props.postData.data.owner}</Text>
                 <Image source={{uri:this.props.postData.data.photo}}
                     style={{'height': 350}}
                     resizeMode = 'contain'   
                 /> 
+                <Text>{this.props.postData.data.owner}: {this.props.postData.data.texto}</Text>
                 {this.state.myLike == false ? 
-                    <TouchableOpacity onPress={()=> this.darLike()}>
-                        <Text>Me gusta</Text>
+                    <TouchableOpacity onPress={()=> this.darLike()} style={styles.like}>
+                        <Text>{this.state.likes} </Text>
+                        <Image 
+                        source={{uri:"https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/64/000000/external-heart-miscellaneous-kiranshastry-lineal-kiranshastry.png"}}
+                        style={{'height':20, 'width':20}}
+                        resizeMode = 'contain'   
+                        />
                     </TouchableOpacity> :
-                    <TouchableOpacity onPress={()=> this.quitarLike()}>
-                        <Text>Quitar like</Text>
+                    <TouchableOpacity onPress={()=> this.quitarLike()} style={styles.like}>
+                        <Text>{this.state.likes} </Text>
+                        <Image 
+                        source={{uri:"https://img.icons8.com/color/48/000000/filled-like.png"}}
+                        style={{'height':20, 'width':20}}
+                        resizeMode = 'contain'   
+                        />
                     </TouchableOpacity>
                 }
                 {/* VER MODAL */}
-                <TouchableOpacity onPress={()=>this.showModal()}>
+                <TouchableOpacity onPress={()=>this.showModal()} style={styles.comentarios}>
+                <Image 
+                        source={{uri:"https://img.icons8.com/ios/50/000000/topic.png"}}
+                        style={{'height':20, 'width':20}}
+                        resizeMode = 'contain'   
+                        />
                     <Text>Ver comentarios</Text>
                 </TouchableOpacity>
 
                 {/* BORRAR POST*/}
-                <TouchableOpacity onPress={()=> this.borrarPost()}> 
-                    <Text>Borrar Post</Text>
-                </TouchableOpacity>
+                {this.props.postData.data.owner == auth.currentUser.email ? 
+                <TouchableOpacity onPress={()=> this.borrarPost()} style={styles.borrar}> 
+                <Image 
+                        source={{uri:"https://img.icons8.com/material-outlined/48/000000/trash--v1.png"}}
+                        style={{'height':20, 'width':20}}
+                        resizeMode = 'contain'   
+                        />
+                </TouchableOpacity> :
+                <Text> </Text>
+                }
 
                 {/* MODAL PARA COMENTARIOS */}
                 { this.state.showModal ?
                      <Modal 
                      style={styles.modalContainer}
                      visible= {this.state.showModal}
-                     animationType= 'slide'
+                     animationType= 'fade'
                      transparent={false}
                      
                     >
@@ -193,10 +215,24 @@ const styles = StyleSheet.create({
         padding: 5,
         marginTop: 20,
         marginLeft:10,
+        marginRight: 10,
+        backgroundColor: 'white'
     },
+    like: {
+    flexDirection: 'row'
+    },
+    borrar: {
+    alignItems: 'flex-end',
+    },
+    comentarios: {
+        flexDirection: 'row',
+        textAlign: 'center',
+        alignItems: 'center',
+        justifyContent: 'center'
+        },
     modalContainer:{
         width:'97%',
-        borderRadius:4,
+        borderRadius: 4,
         padding: 5,
         alignSelf:'center',
         boxShadow: 'rgb(204 204 204) 0px 0px 9px 7px',
@@ -229,7 +265,7 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     alert: {
-        marginLeft:12,
+        marginLeft:10,
         marginBottom: 10,
         color: 'red'
     },

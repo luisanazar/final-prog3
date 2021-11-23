@@ -43,6 +43,8 @@ class Profile extends Component{
           <Text style={styles.welcome}> Nombre de usuario: {this.props.userData.displayName}</Text>
           <Text style={styles.element}> Usuario creado: {this.props.userData.metadata.creationTime}</Text>
           <Text style={styles.element}> Último login: {this.props.userData.metadata.lastSignInTime}</Text>
+          <Text style={styles.element}> Cantidad total de posteos: {this.state.posteos.length}</Text>
+
           <TouchableOpacity style={styles.touchable} onPress={()=>this.props.logout()}>
             <Text style={styles.touchableText}>Logout</Text>
           </TouchableOpacity>
@@ -60,7 +62,7 @@ class Profile extends Component{
 const styles = StyleSheet.create({
     container:{
         marginTop: 20,
-        marginHorizontal:10,
+        marginRight:10,
         backgroundColor: 'rgba(241, 243, 244, 1)'
     },
     welcome:{
@@ -68,20 +70,28 @@ const styles = StyleSheet.create({
         marginTop:10,
         marginBottom:10,
         fontWeight: 'bold',
-        paddingHorizontal: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+        textAlign: 'center'
     },
     element:{
       marginTop:10,
         marginBottom:10,
-        paddingHorizontal: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+        textAlign: 'center'
     },
     touchable:{
         backgroundColor: '#dc3545',
         marginTop: 10,
         borderRadius: 4,
-        width:90,
         padding: 10,
-        marginLeft:15
+        marginLeft: 200,
+        marginRight: 200,
+        alignItems: 'center',
+        justifyContent: 'center',
+        textAlign: 'center'
+
     },
     touchableText:{
         fontWeight: 'bold',

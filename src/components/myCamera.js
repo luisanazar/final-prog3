@@ -88,11 +88,19 @@ class MyCamera extends Component {
                         source={{uri:this.state.photo}}
                     /> 
                     <View style={styles.opciones}>
-                        <TouchableOpacity onPress={()=> this.savePhoto()} style={styles.aceptar}>
-                            <Text>Aceptar</Text>
-                        </TouchableOpacity>
                         <TouchableOpacity onPress={()=> this.clearPhoto()} style={styles.rechazar}>
-                            <Text>Rechazar</Text>
+                            <Image 
+                        source={{uri:"https://img.icons8.com/color/48/000000/delete-sign--v1.png"}}
+                        style={{'height':50, 'width':50}}
+                        resizeMode = 'contain'   
+                        />
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={()=> this.savePhoto()} style={styles.aceptar}>
+                        <Image 
+                        source={{uri:"https://img.icons8.com/color/48/000000/ok--v1.png"}}
+                        style={{'height':50, 'width':50}}
+                        resizeMode = 'contain'   
+                        />
                         </TouchableOpacity>
                     </View>
                 </React.Fragment> :
@@ -106,7 +114,11 @@ class MyCamera extends Component {
                         ref={reference=> this.camera = reference}
                     />
                     <TouchableOpacity style={styles.button} onPress={()=> this.takePicture()}>
-                        <Text>Sacar foto</Text>
+                    <Image 
+                        source={{uri:"https://img.icons8.com/material/24/000000/camera--v1.png"}}
+                        style={{'height':50, 'width':50}}
+                        resizeMode = 'contain'   
+                        />
                     </TouchableOpacity>
                     
                 </View>
@@ -129,21 +141,12 @@ const styles = StyleSheet.create({
     },
     cameraBody:{
         flex: 7,
-        margin: 30
+        margin: 20
     },
     button:{
-        marginLeft: 50,
-        borderRadius: 6,
-        border: 'grey solid 1px',
-        marginTop: 0,
-        marginBottom: 20,
-        paddingTop: 1,
-        paddingBottom: 1,
-        paddingHorizontal: 10,
-        width: 89,
-        height: 30,
         justifyContent: 'center',
         textAlign: 'center',
+        alignItems: 'center'
     },
     opciones: {
         justifyContent: 'center',
@@ -154,8 +157,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         textAlign: 'center',
         marginLeft: 5,
-        borderRadius: 6,
-        border: 'grey solid 1px',
         marginTop: 0,
         marginBottom: 20,
         paddingTop: 2,
@@ -168,8 +169,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         textAlign: 'center',
         marginLeft: 5,
-        borderRadius: 6,
-        border: 'grey solid 1px',
         marginTop: 0,
         marginBottom: 20,
         paddingTop: 2,
@@ -179,8 +178,9 @@ const styles = StyleSheet.create({
         height: 30,
     },
     permiso: {
-        marginLeft:5,
-        color: 'red'
+        marginLeft:10,
+        color: 'red',
+        marginTop: 10
     }
 
 })

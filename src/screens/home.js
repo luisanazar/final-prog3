@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import {
   View,
   StyleSheet,
+  Text,
   FlatList,
 } from "react-native";
 import { db } from "../firebase/config";
@@ -72,19 +73,25 @@ class Home extends Component {
           buscar={(texto) => this.buscar(texto)}
           mostrarTodo={() => this.mostrarTodo()}
         />
+{this.state.posteos.length > 0 ?
 
         <FlatList //pasamos data de posteos, una key unica
           style={styles.formContainer}
           data={this.state.posteos}
           keyExtractor={(post) => post.id}
-          renderItem={({ item }) => <Post postData={item} />}
+          renderItem={({ item }) => <Post postData={item} />} 
 
           // =>  <Text>{item.data.texto}</Text>}
           //armar componente post <Post> mas complejo y renderizarlo con los datos de cada documento
-        />
+        /> :
+     
+  <Text style= {styles.error}>El usuario no existe o aún no tiene publicaciones</Text>
+
+   
+}
       </View>
-    );
-  }
+    )
+}
 }
 
 const styles = StyleSheet.create({
@@ -96,7 +103,12 @@ const styles = StyleSheet.create({
 marginRight:  10,
 marginLeft: 10,
 
-  }
+  },
+error : {
+  color: 'red',
+  marginLeft: 20,
+  marginTop: 10
+}
 });
 
 export default Home;

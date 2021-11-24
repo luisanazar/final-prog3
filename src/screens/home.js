@@ -10,6 +10,7 @@ import { db } from "../firebase/config";
 import Post from "../components/Post";
 import Buscador from "../components/Buscador";
 
+
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -69,6 +70,7 @@ class Home extends Component {
   render() {
     return (
       <View style={styles.container}>
+   
         <Buscador
           buscar={(texto) => this.buscar(texto)}
           mostrarTodo={() => this.mostrarTodo()}
@@ -86,9 +88,7 @@ class Home extends Component {
         /> :
      
   <Text style= {styles.error}>El usuario no existe o aún no tiene publicaciones</Text>
-
-   
-}
+  }
       </View>
     )
 }
@@ -108,7 +108,8 @@ error : {
   color: 'red',
   marginLeft: 20,
   marginTop: 10
-}
+},
+
 });
 
 export default Home;

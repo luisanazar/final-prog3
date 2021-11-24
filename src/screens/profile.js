@@ -39,7 +39,7 @@ class Profile extends Component{
     console.log(this.props.userData);
     return(
       <View style={styles.container}>
-          <Text style={styles.welcome}> Bienvenido: {this.props.userData.email}</Text>
+          <Text style={styles.welcome}> Bienvenido {this.props.userData.email}</Text>
           <Text style={styles.welcome}> Nombre de usuario: {this.props.userData.displayName}</Text>
           <Text style={styles.element}> Usuario creado: {this.props.userData.metadata.creationTime}</Text>
           <Text style={styles.element}> Último login: {this.props.userData.metadata.lastSignInTime}</Text>
@@ -85,19 +85,18 @@ const styles = StyleSheet.create({
         backgroundColor: '#dc3545',
         marginTop: 10,
         borderRadius: 4,
-        padding: 10,
-        marginLeft: 200,
-        marginRight: 200,
+        marginLeft: 150,
+        marginRight: 150,
         alignItems: 'center',
         justifyContent: 'center',
-        textAlign: 'center'
+        textAlign: 'center',
+        paddingVertical:10
 
     },
     touchableText:{
         fontWeight: 'bold',
         color:'#fff',
         textAlign: 'center',
-        paddingHorizontal: 10,
     },
     post: {
     marginTop: 5,

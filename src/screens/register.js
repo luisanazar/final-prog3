@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {View, Text, TextInput, StyleSheet, TouchableOpacity} from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 
 class Register extends Component{
     constructor(props){
@@ -13,7 +14,19 @@ class Register extends Component{
 
     render(){
         return(
-            <View style={styles.formContainer}>
+           <View>
+                 <LinearGradient 
+      colors={['#ffebcd', '#fff0f5']} 
+      start={{
+        x: 0,
+        y: 0
+      }}
+      end={{
+        x: 1,
+        y: 1
+      }}
+      style={styles.box} > 
+       <View style={styles.formContainer}>
                 <Text style={styles.register}>Register</Text>
                 <TextInput
                     style={styles.input}
@@ -39,6 +52,8 @@ class Register extends Component{
                 <TouchableOpacity style={styles.button} onPress={()=>this.props.register(this.state.email, this.state.password, this.state.username)} disabled={this.state.email.length == 0 || this.state.username.length == 0 ||this.state.password.length==0 ? true : false}>
                     <Text style={styles.textButton}>Registrarse</Text>    
                 </TouchableOpacity>
+                </View>
+                </LinearGradient>
             </View>
         )
     }
@@ -85,7 +100,11 @@ const styles = StyleSheet.create({
         color: 'red',
         marginBottom: 10,
         marginLeft: 10
-    }
+    },
+    box: {
+        width: '100%',
+        height:720
+      }
 
 })
 

@@ -3,6 +3,7 @@ import {Text, View, StyleSheet, TouchableOpacity, Modal, TextInput, FlatList, Im
 import firebase from 'firebase';
 import {db, auth} from '../firebase/config';
 import { out } from 'react-native/Libraries/Animated/Easing';
+import { LinearGradient } from 'expo-linear-gradient';
 
 
 class Post extends Component{
@@ -101,7 +102,18 @@ class Post extends Component{
     render(){
         return(
             <View style={styles.container}>
-                <Text>{this.props.postData.data.owner}</Text>
+                <LinearGradient 
+            colors={['#f5f5f5', '#faf0e6']} 
+            start={{
+              x: 0,
+              y: 0
+            }}
+            end={{
+              x: 1,
+              y: 1
+            }}
+            style={styles.box} > 
+                <Text style={styles.titulo}>{this.props.postData.data.owner}</Text>
                 <Image source={{uri:this.props.postData.data.photo}}
                     style={{'height': 350}}
                     resizeMode = 'contain'   
@@ -146,6 +158,7 @@ class Post extends Component{
                 </TouchableOpacity> :
                 <Text> </Text>
                 }
+                    
 
                 {/* MODAL PARA COMENTARIOS */}
                 { this.state.showModal ?
@@ -197,7 +210,8 @@ class Post extends Component{
                      </Modal>    :
                      <Text></Text>
                 }
-                
+
+                 </LinearGradient>
             </View>
             
         )
@@ -224,6 +238,9 @@ const styles = StyleSheet.create({
     borrar: {
     alignItems: 'flex-end',
     },
+    titulo: {
+        fontWeight: 'bolder'
+    },
     comentarios: {
         flexDirection: 'row',
         textAlign: 'center',
@@ -240,6 +257,9 @@ const styles = StyleSheet.create({
         marginTop:20,
         marginBottom: 10, 
     },
+    box: {
+
+      },
     closeButton:{
         color:'#fff',
         padding:5,

@@ -89,7 +89,7 @@ class Menu extends Component{
 
     render(){
         return(
-            
+        
             <NavigationContainer>
                 {this.state.loggedIn == false ?
                     <Drawer.Navigator>

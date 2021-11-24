@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {View, Text, TextInput, StyleSheet, TouchableOpacity} from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 
 class Login extends Component{
     constructor(props){
@@ -15,7 +16,21 @@ class Login extends Component{
     render(){
         console.log(this.props);
         return(
+            <View>
+            <LinearGradient 
+      colors={['#ffebcd', '#fff0f5']} 
+      start={{
+        x: 0,
+        y: 0
+      }}
+      end={{
+        x: 1,
+        y: 1
+      }}
+      style={styles.box} > 
             <View style={styles.formContainer}>
+                    
+     
                 <Text>Login</Text>
                 <TextInput
                     style={styles.input}
@@ -35,6 +50,9 @@ class Login extends Component{
                 <TouchableOpacity style={styles.button} onPress={()=>this.props.login(this.state.email, this.state.password ) } disabled={this.state.email.length == 0 ||this.state.password.length==0 ? true : false}>
                     <Text style={styles.textButton}>Ingresar</Text>    
                 </TouchableOpacity>
+                
+            </View>
+            </LinearGradient>
             </View>
         )
     }
@@ -76,7 +94,11 @@ const styles = StyleSheet.create({
     error: {
         color: 'red',
         marginBottom: 10
-    }
+    },
+    box: {
+        width: '100%',
+        height:720
+      }
 
 })
 

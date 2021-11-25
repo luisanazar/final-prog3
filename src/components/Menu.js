@@ -53,8 +53,6 @@ class Menu extends Component{
     login(email, pass){
         auth.signInWithEmailAndPassword(email, pass)
             .then((response) => { //response tiene un objeto literal con los datos del usuario
-                console.log('Logueado');
-                console.log(response);
                 this.setState({
                     loggedIn: true,
                     userData: response.user,

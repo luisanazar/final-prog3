@@ -70,7 +70,6 @@ class Post extends Component{
     }
 
     guardarComentario(){
-        console.log('guardando comentario');
         //Armar el comentario que vamos a guardar
         let oneComment = {
             createdAt: Date.now(),
@@ -172,6 +171,7 @@ class Post extends Component{
                         <TouchableOpacity onPress={()=>this.hideModal()}>
                             <Text style={styles.closeButton}>X</Text>
                         </TouchableOpacity>
+                        
                         {/* FLAT LIST PARA MOSTRAR COMENTARIO */}
                         { ! this.props.postData.data.comments || this.props.postData.data.comments.length == 0 ? 
                         <Text style={styles.alert}> Aún no hay comentarios. Sé el primero en opinar.</Text>

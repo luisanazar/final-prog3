@@ -26,8 +26,6 @@ class Profile extends Component{
           });
         });
 
-        console.log(posts);
-
         this.setState({
           posteos: posts,
           loading: false,
@@ -36,7 +34,6 @@ class Profile extends Component{
   }
 
   render(){
-    console.log(this.props.userData);
     return(
       <View style={styles.container}>
           <Text style={styles.welcome}> Bienvenido {this.props.userData.email}</Text>

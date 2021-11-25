@@ -12,8 +12,6 @@ class Buscador extends Component{
     render(){
         return(
             <View style= {styles.containerBuscador}>
-             
-
                
                 <TextInput
                 style= {styles.input}

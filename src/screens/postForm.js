@@ -1,4 +1,3 @@
-import { NavigationContainer } from "@react-navigation/native";
 import React, {Component} from "react";
 import {View, Text, TextInput, StyleSheet, TouchableOpacity} from 'react-native';
 import { auth, db } from "../firebase/config";
@@ -17,7 +16,6 @@ class postForm extends Component{
 
 
     submitPost(){
-        console.log('posteanado');
         db.collection('posts').add({
             owner: auth.currentUser.email,
             texto: this.state.textoPost,

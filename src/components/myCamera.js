@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Text, View, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import { Camera } from 'expo-camera';
-import {db, storage} from '../firebase/config'
+import {storage} from '../firebase/config'
 
 
 class MyCamera extends Component {
@@ -23,9 +23,6 @@ class MyCamera extends Component {
             })
         })
         .catch (error => console.log(error));
-        //investigar
-        // console.log(Camera);
-        // console.log(this.camera);
     }
 
     takePicture(){

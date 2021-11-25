@@ -36,7 +36,6 @@ class Home extends Component {
             data: doc.data(), //funcion que se queda solo con la funcion del documento
           });
         });
-        console.log(posts);
 
         this.setState({
           posteos: posts,
@@ -57,8 +56,6 @@ class Home extends Component {
             data: doc.data(), //funcion que se queda solo con la funcion del documento
           });
         });
-
-        console.log(posts);
 
         this.setState({
           posteos: posts,
